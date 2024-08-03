@@ -1,0 +1,157 @@
+@startuml
+class Empleado {
+- String nombre
+- String puesto
+- double salario
++ void trabajar()
++ void tomarOrden()
+}
+
+
+class Brownie {
+- String tipoChocolate
++ void preparar()
++ void servir()
++ String getTipoChocolate()
++ void setTipoChocolate(String)
+}
+
+
+class Sucursal {
+- String nombre
+- String direccion
+- List<Empleado> empleados
+- List<Ingrediente> ingredientes
+- List<Equipo> equipos
+- List<Postre> especialidades
++ void agregarEmpleado(Empleado)
++ void agregarIngrediente(Ingrediente)
++ void agregarEquipo(Equipo)
++ void agregarEspecialidad(Postre)
++ void removerEmpleado(Empleado)
++ void removerIngrediente(Ingrediente)
++ void removerEquipo(Equipo)
++ void removerEspecialidad(Postre)
++ String getNombre()
++ String getDireccion()
++ List<Empleado> getEmpleados()
++ List<Ingrediente> getIngredientes()
++ List<Equipo> getEquipos()
++ List<Postre> getEspecialidades()
++ int getNumeroEmpleados()
++ int getNumeroIngredientes()
++ int getNumeroEquipos()
++ int getNumeroEspecialidades()
++ boolean estaVacia()
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+class Sucursal$Builder {
+- String nombre
+- String direccion
+- List<Empleado> empleados
+- List<Ingrediente> ingredientes
+- List<Equipo> equipos
+- List<Postre> especialidades
++ Builder empleados(List<Empleado>)
++ Builder ingredientes(List<Ingrediente>)
++ Builder equipos(List<Equipo>)
++ Builder especialidades(List<Postre>)
++ Sucursal build()
+}
+
+
+class Cheesecake {
+- String tipoQueso
++ void preparar()
++ void servir()
++ String getTipoQueso()
++ void setTipoQueso(String)
+}
+
+
+class Relleno {
+- String sabor
+- double cantidad
++ String obtenerNombre()
++ double obtenerCantidad()
+}
+
+
+class Crepa {
+- String tipoMasa
++ void preparar()
++ void servir()
++ String getTipoMasa()
++ void setTipoMasa(String)
+}
+
+
+class Pastel {
+- String sabor
++ void preparar()
++ void servir()
++ String getSabor()
++ void setSabor(String)
+}
+
+
+class Equipo {
+- String tipo
+- String estado
++ void encender()
++ void apagar()
++ void reparar()
+}
+
+
+class Masa {
+- String tipo
+- double cantidad
++ String obtenerNombre()
++ double obtenerCantidad()
+}
+
+
+interface Ingrediente {
+~ String obtenerNombre()
+~ double obtenerCantidad()
+}
+
+abstract class Postre {
+# String nombre
+# String tamaño
+# double precio
++ {abstract}void preparar()
++ {abstract}void servir()
++ String getNombre()
++ void setNombre(String)
++ String getTamaño()
++ void setTamaño(String)
++ double getPrecio()
++ void setPrecio(double)
+}
+
+
+class Cobertura {
+- String tipo
+- double cantidad
++ String obtenerNombre()
++ double obtenerCantidad()
+}
+
+
+
+
+Postre <|-- Brownie
+Sucursal +.. Sucursal$Builder
+Postre <|-- Cheesecake
+Ingrediente <|.. Relleno
+Postre <|-- Crepa
+Postre <|-- Pastel
+Ingrediente <|.. Masa
+Ingrediente <|.. Cobertura
+@enduml
